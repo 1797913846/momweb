@@ -318,3 +318,8 @@
 .ant-pagination-next:hover .ant-pagination-item-link {
     color: #E88A0B!important;
 }
+
+.rightchange {
+    float: right;
+    margin-right: -90px;
+}

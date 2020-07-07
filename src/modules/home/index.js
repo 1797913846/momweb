@@ -18,6 +18,8 @@ import t5 from './img/t5.png';
 import k1 from './img/k1.png';
 import top from './img/top.png';
 import bottom from './img/bottom.png';
+import change1 from './img/change1.png';
+import change2 from './img/change2.png';
 //引入数据字典
 import { NAME } from '../../constants/name';
 
@@ -68,7 +70,8 @@ class UserCenter extends React.Component {
             type: [],
             current: 1,
             total: '',
-            pai: 'desc'
+            pai: 'desc',
+            whatname: '期货'
         };
     }
     //请求表格数据的操作
@@ -120,7 +123,13 @@ class UserCenter extends React.Component {
         if (!order) {
             order = ''
         }
-        let url = '/api.v1/ranking?sort=' + order + '&order=' + sort + '&page=' + page + '&size=12';
+        let type;
+        if (this.state.whatname == '期货') {
+            type = 1
+        } else {
+            type = 0
+        }
+        let url = '/api.v1/ranking?sort=' + order + '&order=' + sort + '&page=' + page + '&size=12&type=' + type;
         let method = 'get';
         let beel = false;
         let options = null;
@@ -188,6 +197,21 @@ class UserCenter extends React.Component {
         }, () => {
             this.getData('desc', 'profit_percent', this.state.current);
         });
+    }
+    whatNow() {
+        if (this.state.whatname == '期货') {
+            this.setState({
+                whatname: '证券'
+            }, () => {
+                this.getData('desc', 'profit_percent', 1);
+            })
+        } else if (this.state.whatname == '证券') {
+            this.setState({
+                whatname: '期货'
+            }, () => {
+                this.getData('desc', 'profit_percent', 1);
+            })
+        }
     }
     //数组去重
     deteleObject(obj) {
@@ -257,7 +281,7 @@ class UserCenter extends React.Component {
 
     }
     render() {
-        const { username, jinDom, imgDom, rows, what, total, pai } = this.state;
+        const { username, jinDom, imgDom, rows, what, total, pai, whatname } = this.state;
         const columns = this.columns;
         return (
             /**
@@ -298,6 +322,10 @@ class UserCenter extends React.Component {
                         <span className={what == 'balance' ? 'pactive' : ''} onClick={() => this.paixv('balance', pai)}>当日权益&nbsp;&nbsp;{what == 'balance' ? pai == 'asc' ? <img src={top} alt="" /> : <img src={bottom} alt="" /> : ''}</span>
                         <span className={what == 'total_income_rate' ? 'pactive' : ''} onClick={() => this.paixv('total_income_rate', pai)}>累计收益率&nbsp;&nbsp;{what == 'total_income_rate' ? pai == 'asc' ? <img src={top} alt="" /> : <img src={bottom} alt="" /> : ''}</span>
                         <span className={what == 'total_profit_loss' ? 'pactive' : ''} onClick={() => this.paixv('total_profit_loss', pai)}>累计总盈亏&nbsp;&nbsp;{what == 'total_profit_loss' ? pai == 'asc' ? <img src={top} alt="" /> : <img src={bottom} alt="" /> : ''}</span>
+                        <div className="rightchange" onClick={() => this.whatNow()}>
+                            {whatname == '期货' ? <img src={change1} /> : <img src={change2} />}
+                            <span>{whatname}</span>
+                        </div>
                     </div>
                     <div className="tableBox1">
                         <Table dataSource={rows} columns={columns} size="small" scroll={{ y: 670 }} pagination={false} />
