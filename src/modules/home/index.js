@@ -15,11 +15,17 @@ import t2 from './img/t2.png';
 import t3 from './img/t3.png';
 import t4 from './img/t4.png';
 import t5 from './img/t5.png';
+import t6 from './img/t6.png';
 import k1 from './img/k1.png';
 import top from './img/top.png';
 import bottom from './img/bottom.png';
 import change1 from './img/change1.png';
 import change2 from './img/change2.png';
+import rr1 from './img/rr1.png';
+import rr2 from './img/rr2.png';
+import qq from './img/QQ.png';
+import wx from './img/wx.png';
+import dh from './img/dh.png';
 //引入数据字典
 import { NAME } from '../../constants/name';
 
@@ -60,7 +66,7 @@ class UserCenter extends React.Component {
                     t2: '淘汰线：本金亏损＞9%',
                     t3: '管理资金：等于MOM三段初始资金',
                     t4: '盈利分配：盘手提取30-70%盈利',
-                    t5: '亏损风险：MOM炒手网承担'
+                    t5: '亏损风险：MOM仁信智投承担'
                 },
             ],
             jinDom: '',
@@ -71,18 +77,20 @@ class UserCenter extends React.Component {
             current: 1,
             total: '',
             pai: 'desc',
-            whatname: '期货'
+            whatname: '期货',
+            currentIndex: 1,  //初始化的下标
         };
     }
     //请求表格数据的操作
     componentDidMount = () => {
-        let jinDom = this.state.jinjiData.map(item => (
+        let jinDom = this.state.jinjiData.map((item, index) => (
             <div className='jinbox'>
                 <div>{item.t1}</div>
                 <div>{item.t2}</div>
                 <div>{item.t3}</div>
                 <div>{item.t4}</div>
                 <div>{item.t5}</div>
+                {index != 3 ? <img className="rr1" src={rr1} /> : <img className="rr1" src={rr2} />}
             </div>
         ))
         this.setState({
@@ -95,6 +103,7 @@ class UserCenter extends React.Component {
             <img src={t3} alt="" />
             <img src={t4} alt="" />
             <img src={t5} alt="" />
+            <img src={t6} alt="" />
         </div>)
         this.setState({
             imgDom: imgDom,
@@ -129,13 +138,24 @@ class UserCenter extends React.Component {
         } else {
             type = 0
         }
-        let url = '/api.v1/ranking?sort=' + order + '&order=' + sort + '&page=' + page + '&size=12&type=' + type;
+        let url = '/api.v1/ranking?sort=' + order + '&order=' + sort + '&page=' + page + '&size=20&type=' + type;
         let method = 'get';
         let beel = false;
         let options = null;
         httpAxios(url, method, beel, options).then(res => {
             if (res.code === 0) {
                 res.data.rows.map((item, index) => {
+                    this.columns.push({
+                        title: '排序',
+                        align: 'center',
+                        width: 120,
+                        render: (text, record, index) => {
+                            //生成序号
+                            return (
+                                <span>{(this.state.currentIndex - 1) * 10 + (index + 1)}</span>
+                            )
+                        },
+                    });
                     if (index == 0) {
                         for (let key in item) {
                             if (item.hasOwnProperty(key)) {
@@ -290,8 +310,33 @@ class UserCenter extends React.Component {
              */
             <div>
                 <div className="bannerbox">
+                    <div className="liaobox">
+                        <div className="liao">
+                            <a href="tencent://message/?uin=88888888">
+                                <img src={qq} />
+                                <span className="rl">
+                                    <div>qq</div>
+                                    <div>88888888</div>
+                                </span>
+                            </a>
+                        </div>
+                        <div className="liao">
+                            <img src={wx} />
+                            <span className="rl">
+                                <div>微信</div>
+                                <div>88888888</div>
+                            </span>
+                        </div>
+                        <div className="liao">
+                            <img src={dh} />
+                            <span className="rl">
+                                <div>电话</div>
+                                <div>88888888</div>
+                            </span>
+                        </div>
+                    </div>
                     <div className="fontbox">
-                        <div className="fontStyle font1">MOM 炒手网</div>
+                        <div className="fontStyle font1">MOM 仁信智投</div>
                         <div className="fontStyle font2">实盘选拔  不玩虚的！！！</div>
                         <div className="fontStyle font3">三段晋级！ 百万期货管理账户等你拿！！！</div>
                     </div>
@@ -323,14 +368,14 @@ class UserCenter extends React.Component {
                         <span className={what == 'total_income_rate' ? 'pactive' : ''} onClick={() => this.paixv('total_income_rate', pai)}>累计收益率&nbsp;&nbsp;{what == 'total_income_rate' ? pai == 'asc' ? <img src={top} alt="" /> : <img src={bottom} alt="" /> : ''}</span>
                         <span className={what == 'total_profit_loss' ? 'pactive' : ''} onClick={() => this.paixv('total_profit_loss', pai)}>累计总盈亏&nbsp;&nbsp;{what == 'total_profit_loss' ? pai == 'asc' ? <img src={top} alt="" /> : <img src={bottom} alt="" /> : ''}</span>
                         <div className="rightchange" onClick={() => this.whatNow()}>
-                            {whatname == '期货' ? <img src={change1} /> : <img src={change2} />}
                             <span>{whatname}</span>
+                            {whatname == '期货' ? <img src={change1} /> : <img src={change2} />}
                         </div>
                     </div>
                     <div className="tableBox1">
-                        <Table dataSource={rows} columns={columns} size="small" scroll={{ y: 670 }} pagination={false} />
+                        <Table dataSource={rows} columns={columns} size="small" scroll={{ y: 800 }} pagination={false} />
                         <div className="pagen">
-                            <Pagination size="small" current={this.state.current} defaultPageSize={12} onChange={this.onChange} total={total} />
+                            <Pagination size="small" current={this.state.current} defaultPageSize={20} onChange={this.onChange} total={total} />
                         </div>
                     </div>
                 </div>

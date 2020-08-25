@@ -27,9 +27,10 @@ class UserCenter extends React.Component {
                 <div className="about">
                     <img src={kline} alt="" />
                     <div className="abouttext">
-                        <div className="a1">MoM (Manager of Mangers) 模式也被称为精选多元管理人，通过优中选优的方法，筛选基金管理人或资产管理人，让这些最顶尖的专业人士来管理资产，而自身则通过动态地跟踪、监督、管理他们，及时调整资产配置方案，来收获利益。简而言之，MoM是找最优秀的投顾组成团队、分配资金、操盘投资，既发挥团队力量，又不限制个人风格。</div>
-                        <div className="a2">&nbsp;&nbsp;&nbsp;&nbsp;叁元科技（量化）是由国内资深基金管理团队创立，打造MOM炒手网平台，长期招募优秀期货交易员、操盘手，从中挑选优秀盘手组建MOM多元化风格交易团队，以打造成国内顶级MOM基金为使命创立的。</div>
-                        <div className="a3">&nbsp;&nbsp;&nbsp;&nbsp;产品在私募排排网公示</div>
+                        <div className="a1">&nbsp;&nbsp;&nbsp;&nbsp;仁信智投 ”是杭州诚讯科技有限公司旗下的专注于职业交易员孵化的公司，公司依托于高素质的专业人才和优秀的职业管理团队，以合作基金公司培养、孵化职业交易员为发展方向，为大期货投资爱好者提供一个一站式的“仁信”交流平台。</div>
+                        <div className="a2">&nbsp;&nbsp;&nbsp;&nbsp;公司秉承合规、合理、稳健、共赢的经营理念，为盘手打造一个无门槛的实盘快速晋升通道，帮助盘手快速获得管理型账户，早日成为职业投资经理人。</div>
+                        <div className="a2">&nbsp;&nbsp;&nbsp;&nbsp;借助合作机构平台的强大实力，我们对参与选拔的选手不收取任何费用，只要你的交易数据符合我司交易员选拔要求，将会被聘为我司职业交易员，由我公司提供优厚的薪资及福利待遇。</div>
+                        <div className="a3">&nbsp;&nbsp;&nbsp;&nbsp;希望通过选拔，为我国金融市场发掘更多的实战人才，也为国内广大的民间交易员提供一展身手的舞台，以帮助更多的投资者圆梦。</div>
                     </div>
                 </div>
             </div>

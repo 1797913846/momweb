@@ -77,11 +77,16 @@ class MainContent extends React.Component {
             return;
         };
     }
+    addhref(key) {
+        console.log('我是key', key);
+        if (key == '/jiaoyi') {
+            window.open("http://www.xuetz.com/jysj", "_blank");
+        }
+    }
     render() {
         let menuData = MENU;
-        let menuDom = menuData.map((item, index) => (item.key != 'k' ? <Menu.Item key={item.key}>
-            <Link to={item.path}><span>{item.name}</span></Link>
-        </Menu.Item> : ''));
+        let menuDom = menuData.map((item, index) => (item.key != 'k' ? <Menu.Item key={item.key} onClick={() => this.addhref(item.key)}>
+            <Link to={item.path}><span>{item.name}</span></Link></Menu.Item> : ''));
         let menuData1, routeDom;
         menuData1 = menuData.map((item, index) => {
             if (item.path == '/') {
@@ -98,6 +103,9 @@ class MainContent extends React.Component {
                 item.where = about
             } else if (item.path == '/k') {
                 item.where = k
+            } else if (item.path == '/jiaoyi') {
+                item.where = home
+                // window.open("http://www.xuetz.com/jysj", "_blank");
             } else {
                 item.where = home
             }

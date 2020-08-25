@@ -179,7 +179,11 @@
     margin-right: 30px;
     text-align: center;
     overflow: hidden;
-    padding-top: 10px;
+    padding-top: 20px;
+    position: relative;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 40px;
 }
 
 .jinbox:first-child {
@@ -219,8 +223,8 @@
 }
 
 .timg img {
-    width: 220px;
-    height: 252px;
+    width: 183px;
+    height: 222px;
 }
 
 .ant-menu-item {
@@ -321,5 +325,50 @@
 
 .rightchange {
     float: right;
-    margin-right: -90px;
+    margin-right: -70px;
+    color: #E88A0B;
 }
+
+.rightchange span {
+    color: #E88A0B!important;
+}
+
+.rr1 {
+    position: absolute;
+    right: 20px;
+    margin-top: 2px;
+}
+
+.liaobox {
+    width: 223px;
+    height: 389px;
+    position: fixed;
+    right: 0px;
+    top: 300px;
+    background-image: url(./img/liaobg.png);
+}
+
+.liao {
+    width: 141px;
+    height: 54px;
+    color: #fff;
+    background-color: #3B3B3B;
+    border-radius: 27px;
+    margin-left: 46px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+.liao img {
+    width: 27px;
+    height: 27px;
+    margin-top: -14px;
+    margin-left: 10px;
+}
+
+.liao .rl {
+    display: inline-block;
+    margin-left:10px;
+    margin-top:5px;
+}
+.liao a{color:#fff;}

@@ -23,6 +23,10 @@ const menu = [{
     key: 'about',
     name: '关于我们'
 }, {
+    path: '/jiaoyi',
+    key: '/jiaoyi',
+    name: '交易社区'
+}, {
     path: '/k',
     key: 'k',
     name: 'K线图'
