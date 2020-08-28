@@ -339,12 +339,34 @@
     margin-top: 2px;
 }
 
+.gw {
+    width: 223px;
+    height: 260px;
+    position: fixed;
+    right: 0px;
+    top: 200px;
+    background-image: url(./img/liaobg.png);
+}
+
+.gw div {
+    text-align: left;
+    color: #fff;
+    margin-left: 40px;
+    margin-top:20px;
+}
+
+.gw img {
+    width: 150px;
+    height: 150px;
+    margin-left: 40px;
+}
+
 .liaobox {
     width: 223px;
     height: 389px;
     position: fixed;
     right: 0px;
-    top: 300px;
+    top: 390px;
     background-image: url(./img/liaobg.png);
 }
 
@@ -368,7 +390,10 @@
 
 .liao .rl {
     display: inline-block;
-    margin-left:10px;
-    margin-top:5px;
+    margin-left: 10px;
+    margin-top: 5px;
 }
-.liao a{color:#fff;}
+
+.liao a {
+    color: #fff;
+}

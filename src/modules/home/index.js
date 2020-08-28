@@ -26,6 +26,7 @@ import rr2 from './img/rr2.png';
 import qq from './img/QQ.png';
 import wx from './img/wx.png';
 import dh from './img/dh.png';
+import ecode from './img/ecode.jpg'
 //引入数据字典
 import { NAME } from '../../constants/name';
 
@@ -310,13 +311,17 @@ class UserCenter extends React.Component {
              */
             <div>
                 <div className="bannerbox">
+                    <div className="gw">
+                        <div>官方微信 :</div>
+                        <img src={ecode} />
+                    </div>
                     <div className="liaobox">
                         <div className="liao">
-                            <a href="tencent://message/?uin=88888888">
+                            <a href="tencent://message/?uin=2080807758">
                                 <img src={qq} />
                                 <span className="rl">
-                                    <div>qq</div>
-                                    <div>88888888</div>
+                                    <div>QQ客服</div>
+                                    <div>2080807758</div>
                                 </span>
                             </a>
                         </div>
@@ -324,14 +329,14 @@ class UserCenter extends React.Component {
                             <img src={wx} />
                             <span className="rl">
                                 <div>微信</div>
-                                <div>88888888</div>
+                                <div>15167656776</div>
                             </span>
                         </div>
                         <div className="liao">
                             <img src={dh} />
                             <span className="rl">
                                 <div>电话</div>
-                                <div>88888888</div>
+                                <div>15167656776</div>
                             </span>
                         </div>
                     </div>
